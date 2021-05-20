@@ -1,9 +1,13 @@
 // const list_contacts = document.getElementsByClassName("contact-item cf");
 const list_contacts2 = document.querySelectorAll(`.contact-details`);
 const list_avatars = document.querySelectorAll(`.avatar`);
+const list_avatars_array = Array.apply(null, list_avatars);
 const list_names = document.querySelectorAll(`.contact-details h3`);
+const list_names_array = Array.apply(null, list_names);
 const list_emails = document.querySelectorAll(`.email`);
+const list_emails_array = Array.apply(null, list_emails);
 const list_dates = document.querySelectorAll(`.date`);
+const list_dates_array = Array.apply(null, list_dates);
 // console.log(list_contacts2);
 // console.log(list_avatars);
 // console.log(list_names);
@@ -17,7 +21,7 @@ let current_page = 1;
 row_per_page = 9;
 
 function HideContact() {
-    document.getElementById('contact-list').style.display = 'block';
+    document.getElementById('contact-list').style.display = 'none';
 }
 
 HideContact();
@@ -43,7 +47,7 @@ function DisplayContact(list_avatars, list_names, list_emails, list_dates, wrapp
         let date = paginatedDates[i];
 
         let contact_element = document.createElement('li');
-        contact_element.classList.add('contact-item cf');
+        contact_element.classList.add('contact-item');
 
         let contact_detail_element = document.createElement('div');
         contact_detail_element.classList.add('contact-details');
@@ -57,14 +61,14 @@ function DisplayContact(list_avatars, list_names, list_emails, list_dates, wrapp
 
         let name_element = document.createElement('h3');
         contact_detail_element.appendChild(name_element);
-        name_element = name;
+        name_element.innerHTML = name.innerText;
 
         let email_element = document.createElement('span');
         email_element.classList.add('email');
         contact_detail_element.appendChild(email_element);
-        email_element = email;
+        email_element.innerHTML = email.innerText;
 
-        let join_detail_element = document.createElement.apply('div');
+        let join_detail_element = document.createElement('div');
         join_detail_element.classList.add('joined-details');
 
         contact_element.appendChild(join_detail_element);
@@ -72,7 +76,7 @@ function DisplayContact(list_avatars, list_names, list_emails, list_dates, wrapp
         let date_element = document.createElement('span');
         date_element.classList.add('date');
         join_detail_element.appendChild(date_element);
-        date_element = date;
+        date_element.innerHTML = date.innerText;
 
         wrapper.appendChild(contact_element);
 
@@ -84,7 +88,7 @@ function DisplayContact(list_avatars, list_names, list_emails, list_dates, wrapp
 function SetupPagination(list_avatars, list_names, list_emails, list_dates, wrapper, row_per_page) {
     wrapper.innerHTML = "";
     let page_count = Math.ceil(list_avatars.length / row_per_page);
-    for (let i = 1; i < page_count; i++) {
+    for (let i = 1; i < page_count + 1; i++) {
         let btn = PaginationButton(i, list_avatars, list_names, list_emails, list_dates);
         wrapper.appendChild(btn);
     }
@@ -108,4 +112,4 @@ function PaginationButton(page, list_avatars, list_names, list_emails, list_date
     return button;
 }
 
-SetupPagination(list_avatars, list_names, list_emails, list_dates, pagination_element, row_per_page);
+SetupPagination(list_avatars_array, list_names_array, list_emails_array, list_dates_array, pagination_element, row_per_page);
