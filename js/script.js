@@ -18,7 +18,7 @@ const listContact_element = document.getElementById('list-contact');
 const pagination_element = document.getElementById('pagination');
 
 let current_page = 1;
-row_per_page = 9;
+row_per_page = 11;
 
 function HideContact() {
     document.getElementById('contact-list').style.display = 'none';
