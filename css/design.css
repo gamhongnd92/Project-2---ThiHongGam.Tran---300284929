@@ -24,6 +24,12 @@ body {
     color: #555;
 }
 
+h3 {
+    font-size: 18px;
+    color: #555;
+    margin-top: 20px;
+}
+
 .page-header .contact-search {
     float: right;
 }
